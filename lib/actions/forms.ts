@@ -105,7 +105,6 @@ export async function submitProjectRequirement(
   return { success: true, message: "Project brief received" };
 }
 
-
 export async function archiveContactAction(id: string) {
   await requireAdmin();
   await db

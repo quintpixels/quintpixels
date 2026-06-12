@@ -73,7 +73,6 @@ export default function RegisterClient() {
         </div>
       </div>
 
-      
       <div className="flex-1 flex items-center justify-center p-6 lg:p-16">
         <div className="w-full max-w-sm">
           

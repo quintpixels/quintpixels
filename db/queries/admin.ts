@@ -3,7 +3,6 @@ import { desc, eq, and, or } from "drizzle-orm";
 import { db } from "@/db";
 import { contactSubmissions, projectSubmissions, admins } from "@/db/schema";
 
-
 export async function getContactSubmissions() {
   return db
     .select()
@@ -56,7 +55,6 @@ export async function deleteContact(id: string) {
 export async function deleteProjectSubmission(id: string) {
   await db.delete(projectSubmissions).where(eq(projectSubmissions.id, id));
 }
-
 
 export async function getAllAdmins() {
   return db

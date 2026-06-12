@@ -3,7 +3,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 export function createHorizontalScroll(
   sectionEl: HTMLElement,
   trackEl: HTMLElement,

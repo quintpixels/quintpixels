@@ -7,14 +7,12 @@ import {
   jsonb,
 } from "drizzle-orm/pg-core";
 
-
 export const siteSettings = pgTable("site_settings", {
   id: uuid("id").primaryKey().defaultRandom(),
   key: varchar("key", { length: 100 }).notNull().unique(),
   value: jsonb("value"),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
-
 
 export const seoMetadata = pgTable("seo_metadata", {
   id: uuid("id").primaryKey().defaultRandom(),

@@ -96,7 +96,6 @@ export function PortfolioSection({ projects }: PortfolioSectionProps) {
         revealChars(headingRef.current, { start: "top 80%" });
       }
 
-      
       createHorizontalScroll(section, track, {
         onUpdate: (progress) => {
           if (progressBarRef.current) {
@@ -110,7 +109,6 @@ export function PortfolioSection({ projects }: PortfolioSectionProps) {
         },
       });
 
-      // Card entrance within horizontal scroll
       const cards = track.querySelectorAll("[data-portfolio-card]");
       gsap.from(cards, {
         opacity: 0,
@@ -155,7 +153,6 @@ export function PortfolioSection({ projects }: PortfolioSectionProps) {
         </div>
       </div>
 
-      
       <div className="flex" style={{ height: "70vh" }}>
         <div
           ref={trackRef}
@@ -210,7 +207,6 @@ export function PortfolioSection({ projects }: PortfolioSectionProps) {
                     </div>
                   </div>
 
-                  
                   <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-2 group-hover:translate-y-0">
                     <ArrowUpRight
                       size={20}
@@ -219,7 +215,6 @@ export function PortfolioSection({ projects }: PortfolioSectionProps) {
                     />
                   </div>
 
-                  
                   <div className={`absolute bottom-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ${dark ? "bg-white" : "bg-(--pix-black)"}`} />
                 </div>
               );

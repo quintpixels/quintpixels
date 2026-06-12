@@ -16,6 +16,8 @@ export default async function ServicesPage() {
   await connection();
 
   const dbServices = await getActiveServices().catch(() => []);
+  const normalizeTags = (t: unknown): string[] =>
+    Array.isArray(t) ? (t as string[]) : typeof t === "string" ? (t as string).split(",").map((s) => s.trim()).filter(Boolean) : [];
   const services =
     dbServices.length > 0
       ? dbServices.map((s, i) => ({
@@ -23,7 +25,7 @@ export default async function ServicesPage() {
           title: s.title,
           desc: s.description,
           icon: s.icon ?? undefined,
-          tags: (s.tags as string[]) ?? [],
+          tags: normalizeTags(s.tags),
         }))
       : undefined;
 

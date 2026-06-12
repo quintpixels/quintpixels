@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 const MEMBERS = [
   {
     index: "01",
@@ -72,7 +71,6 @@ interface TeamSectionProps {
   members?: MemberItem[];
 }
 
-
 export function TeamSection({ members }: TeamSectionProps) {
   const displayMembers = members && members.length > 0 ? members : MEMBERS;
   const sectionRef = useRef<HTMLElement>(null);
@@ -92,7 +90,6 @@ export function TeamSection({ members }: TeamSectionProps) {
       if (N === 0) return;
       let activeTimeline: gsap.core.Timeline | null = null;
 
-      
       memberPanels.forEach((panel, i) => {
         const img = panel.querySelector("[data-panel-img]");
         const firstName = panel.querySelector("[data-panel-firstname]");
@@ -147,7 +144,6 @@ export function TeamSection({ members }: TeamSectionProps) {
         });
       });
 
-      
       const transitionTo = (next: number, prev: number) => {
         if (next === prev) return;
         const prevPanel = memberPanels[prev] as HTMLElement | undefined;
@@ -184,7 +180,6 @@ export function TeamSection({ members }: TeamSectionProps) {
         });
         activeTimeline = tl;
 
-        
         tl.to(
           prevImg,
           {
@@ -218,7 +213,6 @@ export function TeamSection({ members }: TeamSectionProps) {
         );
         tl.set(prevPanel, { opacity: 0, zIndex: 1 }, 0.42);
 
-        
         tl.set(nextPanel, { opacity: 1, zIndex: 2 }, 0.15);
         tl.set(nextImg, { clipPath: "inset(0 0 0 100%)", opacity: 1 }, 0.15);
         tl.set(nextFN, { y: dir * 50, opacity: 0 }, 0.15);
@@ -269,7 +263,6 @@ export function TeamSection({ members }: TeamSectionProps) {
           0.6,
         );
 
-        
         railRows.forEach((row, i) => {
           const name = row.querySelector("[data-rail-name]");
           const role = row.querySelector("[data-rail-role]");
@@ -326,19 +319,22 @@ export function TeamSection({ members }: TeamSectionProps) {
         return Math.min(N - 1, Math.max(0, Math.floor(progress * N)));
       };
 
-      
+      const SCROLL_PER_MEMBER = 1.5;
       ScrollTrigger.create({
         trigger: section,
         start: "top top",
         end: () => {
-          const mobile = window.matchMedia("(max-width: 767px)").matches;
-          return `+=${window.innerHeight * (mobile ? N * 0.95 : N + 0.5)}`;
+          return `+=${window.innerHeight * (N * SCROLL_PER_MEMBER)}`;
         },
         pin: true,
         anticipatePin: 1,
+        pinSpacing: true,
         invalidateOnRefresh: true,
         onUpdate(self) {
-          const newIdx = getMemberIndex(self.progress);
+          
+          const segmentSize = 1 / N;
+          const rawIdx = Math.floor(self.progress / segmentSize);
+          const newIdx = Math.min(N - 1, Math.max(0, rawIdx));
           if (newIdx !== currentIdxRef.current) {
             transitionTo(newIdx, currentIdxRef.current);
             currentIdxRef.current = newIdx;
@@ -362,6 +358,7 @@ export function TeamSection({ members }: TeamSectionProps) {
         className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none"
       >
         <span
+
           className="font-pixel text-white/2.5 leading-none tracking-tight"
           style={{ fontSize: "clamp(10rem, 28vw, 36rem)" }}
         >
@@ -369,7 +366,6 @@ export function TeamSection({ members }: TeamSectionProps) {
         </span>
       </div>
 
-      
       <header className="absolute top-0 inset-x-0 flex items-end justify-between px-8 md:px-14 pt-10 pb-6 border-b border-white/6 z-10">
         <div className="flex items-center gap-5">
           <span className="font-mono text-[9px] tracking-[0.35em] uppercase text-white/30">
@@ -391,7 +387,6 @@ export function TeamSection({ members }: TeamSectionProps) {
         </span>
       </header>
 
-      
       <div className="absolute inset-0 top-17 bottom-11 flex">
         
         <div className="relative w-full md:w-[44%] shrink-0 md:border-r md:border-white/5 overflow-hidden">
@@ -413,7 +408,6 @@ export function TeamSection({ members }: TeamSectionProps) {
                 </span>
               </div>
 
-              
               <div
                 data-panel-img
                 className="relative shrink-0 mb-6 overflow-hidden"
@@ -444,7 +438,6 @@ export function TeamSection({ members }: TeamSectionProps) {
                 <div className="absolute bottom-2.5 right-2.5 w-4 h-4 border-r border-b border-white/20" />
               </div>
 
-              
               <div className="overflow-hidden mb-0.5">
                 <div
                   data-panel-firstname
@@ -464,7 +457,6 @@ export function TeamSection({ members }: TeamSectionProps) {
                 </div>
               </div>
 
-              
               <div
                 data-panel-role
                 className="font-mono text-[10px] tracking-[0.28em] uppercase text-white/60 mb-3 shrink-0"
@@ -472,7 +464,6 @@ export function TeamSection({ members }: TeamSectionProps) {
                 {m.role}
               </div>
 
-              
               <p
                 data-panel-phil
                 className="font-sans text-sm text-white/45 leading-relaxed italic mb-auto"
@@ -480,7 +471,6 @@ export function TeamSection({ members }: TeamSectionProps) {
                 &ldquo;{m.philosophy}&rdquo;
               </p>
 
-              
               <div
                 data-panel-stack
                 className="flex flex-wrap gap-1.5 mt-5 shrink-0"
@@ -498,7 +488,6 @@ export function TeamSection({ members }: TeamSectionProps) {
           ))}
         </div>
 
-        
         <div className="relative hidden md:flex flex-1 overflow-hidden flex-col justify-center px-8 md:px-12 lg:px-16">
           
           <div
@@ -536,7 +525,6 @@ export function TeamSection({ members }: TeamSectionProps) {
                   {m.index}
                 </span>
 
-                
                 <div className="flex-1 min-w-0">
                   <div
                     data-rail-name
@@ -557,7 +545,6 @@ export function TeamSection({ members }: TeamSectionProps) {
                   </div>
                 </div>
 
-                
                 <span className="hidden lg:block font-mono text-[8px] tracking-[0.22em] uppercase text-white/12 shrink-0 pt-1.5">
                   {m.system}
                 </span>
@@ -567,7 +554,6 @@ export function TeamSection({ members }: TeamSectionProps) {
         </div>
       </div>
 
-      
       <footer className="absolute bottom-0 inset-x-0 flex items-center justify-between px-5 md:px-14 py-3 border-t border-white/5 z-10">
         <span className="font-mono text-[8px] tracking-[0.3em] uppercase text-white/18 hidden sm:block">
           Scroll to navigate

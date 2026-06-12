@@ -23,7 +23,6 @@ export function StorytellingSection() {
       const words = wordRefs.current.filter(Boolean);
       if (!words.length) return;
 
-      
       gsap.set(words, { opacity: 0, yPercent: 30 });
       gsap.set(words[0], { opacity: 1, yPercent: 0 });
 
@@ -44,7 +43,7 @@ export function StorytellingSection() {
 
       words.forEach((word, i) => {
         if (i === 0) {
-          // First word exits
+          
           tl.to(
             word,
             { opacity: 0, yPercent: -30, scale: 0.92, duration: 1 },
@@ -52,7 +51,7 @@ export function StorytellingSection() {
           );
         }
         if (i > 0) {
-          // Enter
+          
           tl.fromTo(
             word,
             { opacity: 0, yPercent: 30, scale: 0.95 },
@@ -65,7 +64,7 @@ export function StorytellingSection() {
             },
           );
           if (i < words.length - 1) {
-            // Exit
+            
             tl.to(
               word,
               { opacity: 0, yPercent: -30, scale: 0.92, duration: 1 },
@@ -95,12 +94,10 @@ export function StorytellingSection() {
         </span>
       </div>
 
-      
       <div className="absolute top-12 left-6 md:left-10 font-mono text-[10px] tracking-[0.3em] uppercase text-white/30">
         003 — We Build
       </div>
 
-      
       <div className="absolute top-12 right-6 md:right-10 z-20 hidden items-center gap-3 border border-white/10 bg-white/[0.03] px-3 py-2 text-white/75 backdrop-blur-sm sm:flex">
         <span className="scroll-cue__mouse border-white/55">
           <span className="scroll-cue__wheel bg-white" />
@@ -110,7 +107,6 @@ export function StorytellingSection() {
         </span>
       </div>
 
-      
       <div
         ref={containerRef}
         className="relative z-10 w-full flex items-center justify-center px-6 md:px-10"
@@ -131,7 +127,6 @@ export function StorytellingSection() {
         ))}
       </div>
 
-      
       <div className="absolute bottom-0 left-0 right-0 z-20 h-[3px] bg-white/10 md:h-1">
         <div
           ref={progressBarRef}
@@ -140,7 +135,6 @@ export function StorytellingSection() {
         />
       </div>
 
-      
       <div className="absolute bottom-8 left-6 md:left-10 right-6 md:right-10 flex justify-between items-end gap-5">
         <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/20">
           {WORDS.map((w, i) => (

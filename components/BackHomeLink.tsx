@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-
 export function BackHomeLink() {
   return (
     <Link
@@ -15,12 +14,10 @@ export function BackHomeLink() {
         ←
       </span>
 
-      
       <span className="font-pixel text-[clamp(2rem,7vw,6.5rem)] text-(--pix-black) leading-none group-hover:opacity-60 transition-opacity duration-400 whitespace-nowrap">
         BACK TO HOME
       </span>
 
-      
       <span className="hidden sm:block ml-auto font-mono text-[10px] tracking-[0.25em] uppercase text-(--pix-gray-light) shrink-0">
         ← /
       </span>

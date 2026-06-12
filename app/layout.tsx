@@ -6,6 +6,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
 import { ClientShell } from "@/components/ClientShell";
+import { PagePreloader } from "@/components/PagePreloader";
 
 export const metadata: Metadata = {
   title: "Quint Pixels — Creative Technology Studio",
@@ -55,6 +56,7 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col grain">
+        <PagePreloader />
         <SmoothScrollProvider>
           <ClientShell />
           {children}

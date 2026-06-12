@@ -1,8 +1,3 @@
-/**
- * db/seed.ts — Seed the QUINT PIXELS database with initial content.
- * Run with: npm run db:seed
- */
-
 import { config } from "dotenv";
 config({ path: ".env.local" });
 
@@ -25,8 +20,7 @@ const db = drizzle(conn, { schema });
 async function seed() {
   console.log("🌱 Seeding database...\n");
 
-  
-  console.log("→ Hero content");
+    console.log("→ Hero content");
   await db.delete(heroContent);
   await db.insert(heroContent).values({
     headline: "WE ARE\nTHE PIXELS",
@@ -38,8 +32,7 @@ async function seed() {
     cta_secondary_href: "/contact",
   });
 
-  
-  console.log("→ Navigation items");
+    console.log("→ Navigation items");
   await db.delete(navigationItems);
   const navItems = [
     { href: "/", label: "Home", index: "00", order: 0 },
@@ -51,8 +44,7 @@ async function seed() {
   ];
   await db.insert(navigationItems).values(navItems);
 
-  
-  console.log("→ Services");
+    console.log("→ Services");
   await db.delete(services);
   const serviceData = [
     {
@@ -112,8 +104,7 @@ async function seed() {
   ];
   await db.insert(services).values(serviceData);
 
-  
-  console.log("→ Portfolio projects");
+    console.log("→ Portfolio projects");
   await db.delete(portfolioProjects);
   const portfolioData = [
     {
@@ -224,8 +215,7 @@ async function seed() {
   ];
   await db.insert(portfolioProjects).values(portfolioData);
 
-  
-  console.log("→ Products");
+    console.log("→ Products");
   await db.delete(products);
   const productData = [
     {
@@ -264,8 +254,7 @@ async function seed() {
   ];
   await db.insert(products).values(productData);
 
-  
-  console.log("→ Team members");
+    console.log("→ Team members");
   await db.delete(teamMembers);
   const teamData = [
     {
@@ -323,8 +312,7 @@ async function seed() {
   ];
   await db.insert(teamMembers).values(teamData);
 
-  
-  console.log("→ Testimonials");
+    console.log("→ Testimonials");
   await db.delete(testimonials);
   const testimonialData = [
     {

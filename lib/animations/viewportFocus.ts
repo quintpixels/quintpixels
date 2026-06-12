@@ -12,8 +12,8 @@ export function initViewportFocus(): () => void {
   const triggers: ReturnType<typeof ScrollTrigger.create>[] = [];
 
   sections.forEach((section) => {
-    
-    gsap.set(section, { opacity: 0.92 });
+
+        gsap.set(section, { opacity: 0.92 });
 
     const t = ScrollTrigger.create({
       trigger: section,

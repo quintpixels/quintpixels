@@ -9,7 +9,6 @@ import {
   jsonb,
 } from "drizzle-orm/pg-core";
 
-
 export const heroContent = pgTable("hero_content", {
   id: uuid("id").primaryKey().defaultRandom(),
   headline: text("headline").notNull().default("WE ARE\nTHE PIXELS"),
@@ -33,7 +32,6 @@ export const heroContent = pgTable("hero_content", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-
 export const navigationItems = pgTable("navigation_items", {
   id: uuid("id").primaryKey().defaultRandom(),
   href: varchar("href", { length: 255 }).notNull(),
@@ -43,7 +41,6 @@ export const navigationItems = pgTable("navigation_items", {
   active: boolean("active").notNull().default(true),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
-
 
 export const services = pgTable("services", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -57,7 +54,6 @@ export const services = pgTable("services", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
-
 
 export const portfolioProjects = pgTable("portfolio_projects", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -79,7 +75,6 @@ export const portfolioProjects = pgTable("portfolio_projects", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-
 export const products = pgTable("products", {
   id: uuid("id").primaryKey().defaultRandom(),
   productId: varchar("product_id", { length: 20 }).notNull(),
@@ -94,7 +89,6 @@ export const products = pgTable("products", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
-
 
 export const teamMembers = pgTable("team_members", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -114,7 +108,6 @@ export const teamMembers = pgTable("team_members", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
-
 
 export const testimonials = pgTable("testimonials", {
   id: uuid("id").primaryKey().defaultRandom(),

@@ -5,7 +5,6 @@ import * as schema from "./schema";
 
 const connectionString = process.env.DATABASE_URL!;
 
-
 const globalForDb = globalThis as unknown as {
   conn: postgres.Sql | undefined;
 };

@@ -96,7 +96,6 @@ export function AdminSidebar({
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  
   useEffect(() => {
     const sidebar = sidebarRef.current;
     if (!sidebar) return;
@@ -107,7 +106,6 @@ export function AdminSidebar({
     });
   }, [collapsed]);
 
-  
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
@@ -196,12 +194,10 @@ export function AdminSidebar({
         )}
       </div>
 
-      
       <nav className="flex-1 overflow-y-auto overflow-x-hidden py-4 px-2 space-y-5 scrollbar-none">
         
         <div>{renderItems(null)}</div>
 
-        
         {["CONTENT", "INBOX", "SYSTEM"].map((section) => (
           <div key={section}>
             {!collapsed && (
@@ -217,7 +213,6 @@ export function AdminSidebar({
         ))}
       </nav>
 
-      
       <div className="px-2 pb-2">
         <Link
           href="/"
@@ -237,7 +232,6 @@ export function AdminSidebar({
         </Link>
       </div>
 
-      
       <div className="border-t border-black/6 p-3">
         <div
           className={cn(
@@ -297,7 +291,6 @@ export function AdminSidebar({
         {sidebarContent}
       </div>
 
-      
       <button
         onClick={() => setMobileOpen(true)}
         className="lg:hidden fixed top-4 left-4 z-50 w-9 h-9 flex items-center justify-center rounded-sm bg-[#f7f5f2] border border-black/10 text-[#0b0b0a]/60 hover:text-[#0b0b0a]"
@@ -305,7 +298,6 @@ export function AdminSidebar({
         <Menu size={16} />
       </button>
 
-      
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 z-50 flex">
           <div

@@ -12,8 +12,7 @@ export function PixelCursor() {
     const el = ref.current;
     if (!el) return;
 
-    
-    gsap.set(el, { xPercent: -50, yPercent: -50, opacity: 0 });
+        gsap.set(el, { xPercent: -50, yPercent: -50, opacity: 0 });
 
     const xTo = gsap.quickTo(el, "x", { duration: 0.1, ease: "power2.out" });
     const yTo = gsap.quickTo(el, "y", { duration: 0.1, ease: "power2.out" });
@@ -63,6 +62,5 @@ export function PixelCursor() {
     };
   }, []);
 
-  
-  return <div ref={ref} className="cursor-square" aria-hidden="true" />;
+    return <div ref={ref} className="cursor-square" aria-hidden="true" />;
 }

@@ -44,7 +44,6 @@ export function SmoothScrollProvider({
     };
     const refresh = () => ScrollTrigger.refresh();
 
-    
     lenis.on("scroll", syncScrollTrigger);
     gsap.ticker.add(tick);
 

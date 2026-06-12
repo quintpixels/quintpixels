@@ -3,7 +3,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 export function createParallax(
   el: HTMLElement,
   options: {
@@ -26,7 +25,6 @@ export function createParallax(
   });
 }
 
-
 export function createHorizontalParallax(
   el: HTMLElement,
   options: { speed?: number } = {},
@@ -44,7 +42,6 @@ export function createHorizontalParallax(
     },
   });
 }
-
 
 export function createScaleParallax(
   el: HTMLElement,

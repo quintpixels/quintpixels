@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { cn } from "@/lib/utils";
 
-
 const NAV_LINKS = [
   { href: "/", label: "HOME", index: "01" },
   { href: "/about", label: "ABOUT", index: "02" },
@@ -23,7 +22,6 @@ const META = [
   { label: "SYSTEM", value: "MOTION INTERFACE ACTIVE" },
   { label: "YEAR", value: "2026" },
 ];
-
 
 const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·/—";
 
@@ -51,7 +49,6 @@ function scrambleText(el: HTMLElement, original: string) {
   return () => cancelAnimationFrame(rafId);
 }
 
-
 export function Navigation() {
   const pathname = usePathname();
 
@@ -61,7 +58,6 @@ export function Navigation() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  
   useEffect(() => {
     const openHandler = () => setIsOpen(true);
     const closeHandler = () => setIsOpen(false);
@@ -73,15 +69,12 @@ export function Navigation() {
     };
   }, []);
 
-  
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
-  
   const handleClose = () => setIsOpen(false);
 
-  
   useEffect(() => {
     const overlay = overlayRef.current;
     if (!overlay) return;
@@ -201,7 +194,6 @@ export function Navigation() {
     }
   }, [isOpen]);
 
-  
   useEffect(() => {
     return () => {
       document.body.style.overflow = "";
@@ -209,7 +201,6 @@ export function Navigation() {
     };
   }, []);
 
-  
   useEffect(() => {
     if (!isOpen) return;
     const container = scrollContainerRef.current;
@@ -234,7 +225,6 @@ export function Navigation() {
     return () => container.removeEventListener("scroll", onScroll);
   }, [isOpen]);
 
-  
   return (
     <div
       ref={overlayRef}
@@ -266,7 +256,6 @@ export function Navigation() {
         </span>
       </div>
 
-      
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -277,7 +266,6 @@ export function Navigation() {
         }}
       />
 
-      
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -289,7 +277,6 @@ export function Navigation() {
         }}
       />
 
-      
       <div
         data-nav-topbar
         className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-7 sm:px-10 lg:px-16 h-18 border-b border-(--pix-border)/55"
@@ -322,7 +309,6 @@ export function Navigation() {
         </button>
       </div>
 
-      
       <div
         className="absolute left-0 right-0 z-10 flex overflow-hidden"
         style={{ top: "4.5rem", bottom: "2.75rem" }}
@@ -406,7 +392,6 @@ export function Navigation() {
           </nav>
         </div>
 
-        
         <aside className="hidden lg:flex flex-col justify-center gap-8 px-12 xl:px-16 py-12 min-w-65 xl:min-w-75 border-l border-(--pix-border)/45 shrink-0 overflow-y-auto">
           <div
             aria-hidden="true"
@@ -439,7 +424,6 @@ export function Navigation() {
         </aside>
       </div>
 
-      
       <div
         data-nav-bottombar
         className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between px-7 sm:px-10 lg:px-16 h-11 border-t border-(--pix-border)/55"

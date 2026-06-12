@@ -30,7 +30,6 @@ export function ContactSection() {
       if (headingRef.current)
         revealChars(headingRef.current, { start: "top 80%" });
 
-      
       const fields = formRef.current?.querySelectorAll("[data-field]");
       if (fields) {
         gsap.from(fields, {
@@ -47,7 +46,6 @@ export function ContactSection() {
         });
       }
 
-      
       if (ctaRef.current) {
         const cleanup = createMagnetic(ctaRef.current, { strength: 0.5 });
         return cleanup;
@@ -92,7 +90,6 @@ export function ContactSection() {
         </span>
       </div>
 
-      
       <div className="relative z-10 flex items-center gap-4 mb-14">
         <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/30">
           007
@@ -103,7 +100,6 @@ export function ContactSection() {
         </span>
       </div>
 
-      
       <div className="relative z-10 overflow-hidden mb-20">
         <h2
           ref={headingRef}
@@ -113,7 +109,6 @@ export function ContactSection() {
         </h2>
       </div>
 
-      
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
         
         <div className="flex flex-col justify-between gap-16">
@@ -142,7 +137,6 @@ export function ContactSection() {
             </div>
           </div>
 
-          
           <div>
             <a
               ref={ctaRef}
@@ -159,7 +153,6 @@ export function ContactSection() {
           </div>
         </div>
 
-        
         <form
           ref={formRef}
           onSubmit={handleSubmit}
@@ -244,7 +237,6 @@ export function ContactSection() {
         </form>
       </div>
 
-      
       <div className="relative z-10 mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4">
         <div className="flex items-center gap-3">
           <Image src="/white-logo.png" alt="Quint Pixels" width={20} height={20} className="w-5 h-5 object-contain opacity-30" />

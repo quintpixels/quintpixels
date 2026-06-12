@@ -76,8 +76,8 @@ export async function register(
   prevState: AuthState,
   formData: FormData,
 ): Promise<AuthState> {
-  
-  if (process.env.ENABLE_ADMIN_REGISTRATION !== "true") {
+
+    if (process.env.ENABLE_ADMIN_REGISTRATION !== "true") {
     return { message: "Registration is currently disabled" };
   }
 
@@ -94,8 +94,7 @@ export async function register(
 
   const { name, email, password } = validated.data;
 
-  
-  const [existing] = await db
+    const [existing] = await db
     .select({ id: admins.id })
     .from(admins)
     .where(eq(admins.email, email))
@@ -105,8 +104,7 @@ export async function register(
     return { errors: { email: ["An account with this email already exists"] } };
   }
 
-  
-  const [count] = await db.select({ count: admins.id }).from(admins).limit(1);
+    const [count] = await db.select({ count: admins.id }).from(admins).limit(1);
 
   const role = !count ? "owner" : "admin";
 

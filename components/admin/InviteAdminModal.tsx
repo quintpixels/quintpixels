@@ -67,7 +67,6 @@ export function InviteAdminModal({ onCreated }: { onCreated?: () => void }) {
                   </div>
                 )}
 
-                
                 <div>
                   <label className="block font-pixel text-[7px] tracking-[0.3em] text-white/40 uppercase mb-1.5">
                     Full Name
@@ -86,7 +85,6 @@ export function InviteAdminModal({ onCreated }: { onCreated?: () => void }) {
                   )}
                 </div>
 
-                
                 <div>
                   <label className="block font-pixel text-[7px] tracking-[0.3em] text-white/40 uppercase mb-1.5">
                     Email
@@ -105,7 +103,6 @@ export function InviteAdminModal({ onCreated }: { onCreated?: () => void }) {
                   )}
                 </div>
 
-                
                 <div>
                   <label className="block font-pixel text-[7px] tracking-[0.3em] text-white/40 uppercase mb-1.5">
                     Password
@@ -133,7 +130,6 @@ export function InviteAdminModal({ onCreated }: { onCreated?: () => void }) {
                   )}
                 </div>
 
-                
                 <div>
                   <label className="block font-pixel text-[7px] tracking-[0.3em] text-white/40 uppercase mb-1.5">
                     Role
@@ -157,7 +153,6 @@ export function InviteAdminModal({ onCreated }: { onCreated?: () => void }) {
                   )}
                 </div>
 
-                
                 <div className="flex gap-3 pt-2">
                   <button
                     type="button"

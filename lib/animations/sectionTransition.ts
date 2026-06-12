@@ -3,7 +3,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 export function createWordCycle(
   sectionEl: HTMLElement,
   wordEls: HTMLElement[],
@@ -15,8 +14,7 @@ export function createWordCycle(
   const { pinDuration = 300, scrub = 1.2 } = options;
   const count = wordEls.length;
 
-  
-  gsap.set(wordEls, { opacity: 0, yPercent: 40 });
+    gsap.set(wordEls, { opacity: 0, yPercent: 40 });
   gsap.set(wordEls[0], { opacity: 1, yPercent: 0 });
 
   const tl = gsap.timeline({
@@ -47,9 +45,6 @@ export function createWordCycle(
   return tl;
 }
 
-/**
- * Dark section entrance — fade in background color
- */
 export function createSectionEntrance(
   el: HTMLElement,
   options: { start?: string; fromY?: number } = {},

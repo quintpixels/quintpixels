@@ -1,7 +1,6 @@
 import { gsap } from "gsap";
 import SplitType from "split-type";
 
-
 export function runNotFoundReveal(container: HTMLElement): () => void {
   gsap.set(container, { autoAlpha: 0 });
 
@@ -22,11 +21,9 @@ export function runNotFoundReveal(container: HTMLElement): () => void {
   );
   const footerEl = container.querySelector<HTMLElement>("[data-nf-footer]");
 
-  
-  tl.to(container, { autoAlpha: 1, duration: 0.5, ease: "power2.out" });
+    tl.to(container, { autoAlpha: 1, duration: 0.5, ease: "power2.out" });
 
-  
-  if (headerEl) {
+    if (headerEl) {
     gsap.set(headerEl, { y: -14, autoAlpha: 0 });
     tl.to(
       headerEl,
@@ -35,8 +32,7 @@ export function runNotFoundReveal(container: HTMLElement): () => void {
     );
   }
 
-  
-  if (el404) {
+    if (el404) {
     const split = new SplitType(el404, { types: "chars" });
     if (split.chars?.length) {
       gsap.set(split.chars, { yPercent: 110, opacity: 0 });
@@ -54,14 +50,12 @@ export function runNotFoundReveal(container: HTMLElement): () => void {
     }
   }
 
-  
-  if (lineEl) {
+    if (lineEl) {
     gsap.set(lineEl, { scaleX: 0, transformOrigin: "left center" });
     tl.to(lineEl, { scaleX: 1, duration: 0.75, ease: "power3.out" }, "-=0.55");
   }
 
-  
-  if (statusEl) {
+    if (statusEl) {
     gsap.set(statusEl, { y: 14, autoAlpha: 0 });
     tl.to(
       statusEl,
@@ -70,8 +64,7 @@ export function runNotFoundReveal(container: HTMLElement): () => void {
     );
   }
 
-  
-  if (subEl) {
+    if (subEl) {
     gsap.set(subEl, { y: 10, autoAlpha: 0 });
     tl.to(
       subEl,
@@ -80,8 +73,7 @@ export function runNotFoundReveal(container: HTMLElement): () => void {
     );
   }
 
-  
-  if (actionsEl) {
+    if (actionsEl) {
     gsap.set(actionsEl, { y: 20, autoAlpha: 0 });
     tl.to(
       actionsEl,
@@ -90,8 +82,7 @@ export function runNotFoundReveal(container: HTMLElement): () => void {
     );
   }
 
-  
-  if (metaItems.length) {
+    if (metaItems.length) {
     gsap.set(metaItems, { autoAlpha: 0, x: -6 });
     tl.to(
       metaItems,
@@ -100,8 +91,7 @@ export function runNotFoundReveal(container: HTMLElement): () => void {
     );
   }
 
-  
-  if (sideLeft) {
+    if (sideLeft) {
     gsap.set(sideLeft, { autoAlpha: 0 });
     tl.to(sideLeft, { autoAlpha: 1, duration: 1.4 }, "-=0.5");
   }
@@ -110,8 +100,7 @@ export function runNotFoundReveal(container: HTMLElement): () => void {
     tl.to(sideRight, { autoAlpha: 1, duration: 1.4 }, "<");
   }
 
-  
-  if (footerEl) {
+    if (footerEl) {
     gsap.set(footerEl, { y: 10, autoAlpha: 0 });
     tl.to(
       footerEl,
@@ -122,7 +111,6 @@ export function runNotFoundReveal(container: HTMLElement): () => void {
 
   return () => tl.kill();
 }
-
 
 export function setupGlitch(el: HTMLElement): () => void {
   let timeoutId: ReturnType<typeof setTimeout>;
@@ -158,7 +146,6 @@ export function setupGlitch(el: HTMLElement): () => void {
     gsap.killTweensOf(el);
   };
 }
-
 
 export function setupMouseParallax(
   container: HTMLElement,

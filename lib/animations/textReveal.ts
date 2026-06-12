@@ -4,7 +4,6 @@ import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 export function revealLines(
   el: HTMLElement,
   options: {
@@ -24,8 +23,7 @@ export function revealLines(
 
   if (!split.lines?.length) return;
 
-  
-  split.lines.forEach((line) => {
+    split.lines.forEach((line) => {
     const wrapper = document.createElement("div");
     wrapper.style.overflow = "hidden";
     wrapper.style.display = "block";
@@ -47,7 +45,6 @@ export function revealLines(
     },
   });
 }
-
 
 export function revealChars(
   el: HTMLElement,
@@ -77,7 +74,6 @@ export function revealChars(
   });
 }
 
-
 export function revealWords(
   el: HTMLElement,
   options: {
@@ -105,7 +101,6 @@ export function revealWords(
   });
 }
 
-
 export function revealFade(
   elements: HTMLElement | HTMLElement[] | NodeListOf<HTMLElement>,
   options: {
@@ -130,7 +125,6 @@ export function revealFade(
     },
   });
 }
-
 
 export function revealLine(
   el: HTMLElement,

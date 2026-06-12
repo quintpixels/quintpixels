@@ -4,7 +4,6 @@ import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 export function animateHeroEntrance(containerEl: HTMLElement) {
   const tl = gsap.timeline({ delay: 0.3 });
 
@@ -67,7 +66,6 @@ export function animateHeroEntrance(containerEl: HTMLElement) {
 
   return tl;
 }
-
 
 export function animateHeroScroll(heroEl: HTMLElement) {
   const overlay = heroEl.querySelector("[data-hero-overlay]");

@@ -173,7 +173,6 @@ export function ProjectSidebar({ isOpen, onClose }: Props) {
               </div>
             </div>
 
-            
             <div data-field className="pix-section">
               <p className="pix-section-label">PROJECT TYPE</p>
               <div className="pix-option-grid pix-option-grid--5">
@@ -195,7 +194,6 @@ export function ProjectSidebar({ isOpen, onClose }: Props) {
               </div>
             </div>
 
-            
             <div data-field className="pix-section">
               <p className="pix-section-label">BUDGET RANGE</p>
               <div className="pix-option-grid pix-option-grid--4">
@@ -215,7 +213,6 @@ export function ProjectSidebar({ isOpen, onClose }: Props) {
               </div>
             </div>
 
-            
             <div data-field className="pix-section">
               <p className="pix-section-label">TIMELINE</p>
               <div className="pix-option-grid pix-option-grid--4">
@@ -235,7 +232,6 @@ export function ProjectSidebar({ isOpen, onClose }: Props) {
               </div>
             </div>
 
-            
             <div data-field className="pix-section">
               <p className="pix-section-label">SERVICES NEEDED</p>
               <div className="pix-option-grid pix-option-grid--3">
@@ -258,7 +254,6 @@ export function ProjectSidebar({ isOpen, onClose }: Props) {
               </div>
             </div>
 
-            
             <div data-field className="pix-field">
               <label className="pix-label">Project Description</label>
               <textarea

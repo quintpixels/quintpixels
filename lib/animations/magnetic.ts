@@ -1,6 +1,5 @@
 import { gsap } from "gsap";
 
-
 export function createMagnetic(
   el: HTMLElement,
   options: {

@@ -14,11 +14,9 @@ import {
 } from "@/db/schema";
 import { requireAdmin } from "@/lib/auth/middleware";
 
-
 export async function updateHeroContent(formData: FormData) {
   await requireAdmin();
   const data = {
-    headline: formData.get("headline") as string,
     subheadline: formData.get("subheadline") as string,
     cta_primary_text: formData.get("cta_primary_text") as string,
     cta_primary_href: formData.get("cta_primary_href") as string,
@@ -42,7 +40,6 @@ export async function updateHeroContent(formData: FormData) {
   revalidatePath("/");
   return { success: true };
 }
-
 
 export async function createService(formData: FormData) {
   await requireAdmin();
@@ -103,7 +100,6 @@ export async function toggleServiceActive(id: string, active: boolean) {
   revalidatePath("/services");
   return { success: true };
 }
-
 
 export async function createPortfolioProject(formData: FormData) {
   await requireAdmin();
@@ -176,7 +172,6 @@ export async function deletePortfolioProject(id: string) {
   return { success: true };
 }
 
-
 export async function createProduct(formData: FormData) {
   await requireAdmin();
   const existing = await db.select({ id: products.id }).from(products);
@@ -222,7 +217,6 @@ export async function deleteProduct(id: string) {
   return { success: true };
 }
 
-// ─── Team Members ─────────────────────────────────────────────────────────────
 export async function createTeamMember(formData: FormData) {
   await requireAdmin();
   const stack = (formData.get("stack") as string)
@@ -281,7 +275,6 @@ export async function deleteTeamMember(id: string) {
   return { success: true };
 }
 
-// ─── Testimonials ─────────────────────────────────────────────────────────────
 export async function createTestimonial(formData: FormData) {
   await requireAdmin();
   const existing = await db.select({ id: testimonials.id }).from(testimonials);
@@ -321,7 +314,6 @@ export async function deleteTestimonial(id: string) {
   return { success: true };
 }
 
-// ─── Navigation ───────────────────────────────────────────────────────────────
 export async function updateNavigationItems(
   items: Array<{
     id?: string;
@@ -332,7 +324,6 @@ export async function updateNavigationItems(
   }>,
 ) {
   await requireAdmin();
-  // Upsert each item
   for (const item of items) {
     if (item.id) {
       await db

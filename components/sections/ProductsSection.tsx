@@ -95,7 +95,6 @@ export function ProductsSection({ products }: ProductsSectionProps) {
           },
         });
 
-        
         const borderEl = card.querySelector("[data-card-border]");
         card.addEventListener("mouseenter", () => {
           gsap.to(borderEl, { opacity: 1, duration: 0.3 });
@@ -127,7 +126,6 @@ export function ProductsSection({ products }: ProductsSectionProps) {
         </span>
       </div>
 
-      
       <div className="overflow-hidden mb-20">
         <h2
           ref={headingRef}
@@ -137,7 +135,6 @@ export function ProductsSection({ products }: ProductsSectionProps) {
         </h2>
       </div>
 
-      
       <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-(--pix-border)">
         {displayProducts.map(({ id, name, type, desc, icon, status }, i) => {
           const Icon =

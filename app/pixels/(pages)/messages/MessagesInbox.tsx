@@ -133,7 +133,6 @@ export function MessagesInbox({
           </button>
         </div>
 
-        
         <div className="p-3 border-b border-[#e0ddd8] space-y-2">
           <div className="relative">
             <Search
@@ -166,7 +165,6 @@ export function MessagesInbox({
           )}
         </div>
 
-        
         <div className="flex-1 overflow-y-auto">
           {filtered.length === 0 && (
             <div className="px-4 py-12 text-center font-pixel text-[7px] text-[#c8c6c1] uppercase">
@@ -215,7 +213,6 @@ export function MessagesInbox({
         </div>
       </div>
 
-      
       <div className="flex-1 hidden md:flex flex-col">
         {!selected ? (
           <div className="flex-1 flex items-center justify-center">
@@ -267,7 +264,6 @@ export function MessagesInbox({
               </div>
             </div>
 
-            
             <div className="space-y-4 mb-6">
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -310,10 +306,8 @@ export function MessagesInbox({
               </div>
             </div>
 
-            
             <div className="h-px bg-[#e0ddd8] mb-6" />
 
-            
             <div>
               <div className="font-pixel text-[7px] tracking-widest text-[#c8c6c1] uppercase mb-3">
                 MESSAGE
@@ -323,7 +317,6 @@ export function MessagesInbox({
               </p>
             </div>
 
-            
             <div className="mt-8">
               <a
                 href={`mailto:${selected.email}?subject=Re: Your message to Quint Pixels`}

@@ -52,7 +52,6 @@ export function ServicesCMS({ services: initial }: ServicesCMSProps) {
         </button>
       </div>
 
-      
       <div className="border border-white/5 rounded-sm overflow-hidden">
         <table className="w-full">
           <thead>
@@ -103,7 +102,12 @@ export function ServicesCMS({ services: initial }: ServicesCMSProps) {
                 </td>
                 <td className="px-4 py-3 hidden md:table-cell">
                   <div className="flex flex-wrap gap-1">
-                    {(service.tags as string[]).slice(0, 3).map((tag) => (
+                    {(Array.isArray(service.tags)
+                      ? (service.tags as string[])
+                      : typeof service.tags === "string"
+                        ? (service.tags as string).split(",").map((t) => t.trim()).filter(Boolean)
+                        : []
+                    ).slice(0, 3).map((tag) => (
                       <span
                         key={tag}
                         className="px-2 py-0.5 bg-white/5 font-mono text-[8px] text-white/40 rounded-sm"

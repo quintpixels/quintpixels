@@ -15,14 +15,12 @@ export default function LoginPage() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
-      
       tl.from(bgRef.current, {
         opacity: 0,
         duration: 1.2,
         ease: "power2.out",
       });
 
-      
       tl.from(
         "[data-form-el]",
         {
@@ -63,13 +61,11 @@ export default function LoginPage() {
           }}
         />
 
-        
         <div className="absolute top-[20%] left-[15%] w-2 h-2 bg-white/10" />
         <div className="absolute top-[35%] right-[20%] w-1.5 h-1.5 bg-white/5" />
         <div className="absolute bottom-[30%] left-[25%] w-3 h-3 bg-white/5" />
         <div className="absolute bottom-[20%] right-[15%] w-1 h-1 bg-white/15" />
 
-        
         <div>
           <div className="inline-flex items-center gap-3 mb-16">
             <div className="w-8 h-8 bg-[#0b0b0a] flex items-center justify-center">
@@ -81,7 +77,6 @@ export default function LoginPage() {
           </div>
         </div>
 
-        
         <div className="relative">
           <div className="font-pixel text-[10px] tracking-[0.3em] text-white/25 uppercase mb-6">
             ADMIN SYSTEM
@@ -96,7 +91,6 @@ export default function LoginPage() {
             interface.
           </p>
 
-          
           <div className="mt-12 space-y-2">
             {[
               "CONTENT MANAGEMENT",
@@ -114,7 +108,6 @@ export default function LoginPage() {
           </div>
         </div>
 
-        
         <div className="flex items-center gap-2">
           <div className="w-1.5 h-1.5 rounded-full bg-white/30 animate-pulse" />
           <span className="font-mono text-[9px] text-white/20 uppercase tracking-widest">
@@ -123,7 +116,6 @@ export default function LoginPage() {
         </div>
       </div>
 
-      
       <div className="flex-1 flex items-center justify-center p-6 lg:p-16">
         <div className="w-full max-w-sm">
           
@@ -136,7 +128,6 @@ export default function LoginPage() {
             </span>
           </div>
 
-          
           <div data-form-el className="mb-10">
             <div className="font-pixel text-[8px] tracking-[0.3em] text-white/25 uppercase mb-3">
               ADMIN LOGIN
@@ -159,7 +150,6 @@ export default function LoginPage() {
               </div>
             )}
 
-            
             <div data-form-el>
               <label className="block font-pixel text-[7px] tracking-[0.25em] text-white/30 uppercase mb-2">
                 EMAIL
@@ -179,7 +169,6 @@ export default function LoginPage() {
               )}
             </div>
 
-            
             <div data-form-el>
               <label className="block font-pixel text-[7px] tracking-[0.25em] text-white/30 uppercase mb-2">
                 PASSWORD
@@ -199,7 +188,6 @@ export default function LoginPage() {
               )}
             </div>
 
-            
             <div data-form-el className="pt-2">
               <button
                 type="submit"
@@ -211,7 +199,6 @@ export default function LoginPage() {
             </div>
           </form>
 
-          
           <div data-form-el className="mt-8 flex items-center gap-3">
             <div className="h-px flex-1 bg-white/5" />
             <Link

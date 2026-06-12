@@ -28,6 +28,12 @@ export default async function Home() {
       getActiveTeamMembers().catch(() => []),
     ]);
 
+  const normalizeTags = (tags: unknown): string[] => {
+    if (Array.isArray(tags)) return tags as string[];
+    if (typeof tags === "string") return tags.split(",").map((t) => t.trim()).filter(Boolean);
+    return [];
+  };
+
   const services =
     dbServices.length > 0
       ? dbServices.map((s, i) => ({
@@ -35,7 +41,7 @@ export default async function Home() {
           title: s.title,
           desc: s.description,
           icon: s.icon ?? undefined,
-          tags: (s.tags as string[]) ?? [],
+          tags: normalizeTags(s.tags),
         }))
       : undefined;
 
@@ -46,7 +52,7 @@ export default async function Home() {
           category: p.category ?? "",
           title: p.title,
           sub: p.sub ?? p.description ?? "",
-          tags: (p.tags as string[]) ?? [],
+          tags: normalizeTags(p.tags),
           year: p.year ?? new Date().getFullYear().toString(),
           color: p.color ?? "#f0ede9",
         }))
@@ -75,7 +81,7 @@ export default async function Home() {
           philosophy: m.philosophy ?? "",
           initials: m.initials,
           system: m.system ?? "",
-          stack: (m.stack as string[]) ?? [],
+          stack: normalizeTags(m.stack),
           accentHue: m.accentHue ?? "220 40% 14%",
         }))
       : undefined;

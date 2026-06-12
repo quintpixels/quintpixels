@@ -35,7 +35,6 @@ export function FloatingActions() {
     };
   }, []);
 
-  
   useEffect(() => {
     const handler = () => setNavOpen(false);
     document.addEventListener("pix:nav:closed", handler);
@@ -76,7 +75,6 @@ export function FloatingActions() {
         <span className="floating-btn-label">MENU</span>
       </button>
 
-      
       <div className="floating-actions" aria-label="Quick actions">
         <button
           ref={connectBtnRef}
@@ -101,7 +99,6 @@ export function FloatingActions() {
         </button>
       </div>
 
-      
       <ConnectSidebar
         isOpen={connectOpen}
         onClose={() => setConnectOpen(false)}

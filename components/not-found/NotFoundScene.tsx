@@ -21,7 +21,6 @@ export function NotFoundScene() {
   const btnPortfolioRef = useRef<HTMLAnchorElement>(null);
   const pathname = usePathname();
 
-  
   useEffect(() => {
     setPage404(true);
     const html = document.documentElement;
@@ -49,7 +48,6 @@ export function NotFoundScene() {
       cleanups.push(setupGlitch(el404Ref.current));
     }
 
-    
     const parallaxLayers: { el: HTMLElement; strength: number }[] = [];
     if (el404Ref.current)
       parallaxLayers.push({ el: el404Ref.current, strength: 10 });
@@ -79,7 +77,6 @@ export function NotFoundScene() {
         <PixelFragmentSystem />
       </div>
 
-      
       <div
         ref={bgTextRef}
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0"
@@ -97,13 +94,11 @@ export function NotFoundScene() {
         </span>
       </div>
 
-      
       <div
         className="nf-scan-beam absolute left-0 right-0 h-px pointer-events-none z-0"
         aria-hidden="true"
       />
 
-      
       <div
         data-nf-side-left
         className="hidden lg:flex absolute left-5 top-1/2 -translate-y-1/2 z-10 pointer-events-none select-none"
@@ -117,7 +112,6 @@ export function NotFoundScene() {
         </span>
       </div>
 
-      
       <div
         data-nf-side-right
         className="hidden lg:flex absolute right-5 top-1/2 -translate-y-1/2 z-10 pointer-events-none select-none"
@@ -131,7 +125,6 @@ export function NotFoundScene() {
         </span>
       </div>
 
-      
       <header
         data-nf-header
         className="relative z-10 flex items-center justify-between px-6 md:px-10 lg:px-14 py-6 border-b border-[#e0ddd8]"
@@ -154,7 +147,6 @@ export function NotFoundScene() {
         </div>
       </header>
 
-      
       <main className="flex-1 flex flex-col items-center justify-center relative z-10 px-6 py-16 md:py-24">
         
         <div className="flex flex-wrap items-start justify-center gap-8 md:gap-14 lg:gap-20 mb-14 md:mb-20">
@@ -175,7 +167,6 @@ export function NotFoundScene() {
           ))}
         </div>
 
-        
         <div className="overflow-hidden">
           <div
             ref={el404Ref}
@@ -191,13 +182,11 @@ export function NotFoundScene() {
           </div>
         </div>
 
-        
         <div
           data-nf-line
           className="w-24 md:w-32 h-px bg-[#0b0b0a]/18 mt-8 mb-8 origin-left"
         />
 
-        
         <p
           data-nf-status
           className="font-pixel text-[9px] md:text-[10px] tracking-[0.55em] text-[#0b0b0a]/28 uppercase mb-5"
@@ -205,7 +194,6 @@ export function NotFoundScene() {
           SIGNAL LOST
         </p>
 
-        
         <p
           data-nf-sub
           className="font-mono text-[10px] md:text-[11px] tracking-[0.12em] text-[#0b0b0a]/18 uppercase text-center max-w-[32ch] leading-loose"
@@ -215,7 +203,6 @@ export function NotFoundScene() {
           DOES NOT EXIST WITHIN THIS SYSTEM.
         </p>
 
-        
         <div
           data-nf-actions
           className="flex flex-col sm:flex-row items-center gap-4 mt-12 md:mt-16"
@@ -235,7 +222,6 @@ export function NotFoundScene() {
             <span className="relative z-10">RETURN HOME</span>
           </Link>
 
-          
           <Link
             ref={btnPortfolioRef}
             href="/portfolio"
@@ -251,7 +237,6 @@ export function NotFoundScene() {
         </div>
       </main>
 
-      
       <footer
         data-nf-footer
         className="relative z-10 flex items-center justify-between px-6 md:px-10 lg:px-14 py-5 border-t border-[#e0ddd8]"

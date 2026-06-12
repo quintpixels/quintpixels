@@ -8,7 +8,6 @@ import {
   jsonb,
 } from "drizzle-orm/pg-core";
 
-
 export const contactSubmissions = pgTable("contact_submissions", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: varchar("name", { length: 200 }).notNull(),
@@ -18,10 +17,9 @@ export const contactSubmissions = pgTable("contact_submissions", {
   read: boolean("read").notNull().default(false),
   archived: boolean("archived").notNull().default(false),
   source: varchar("source", { length: 50 }).notNull().default("contact"),
-  
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
 
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+});
 
 export const projectSubmissions = pgTable("project_submissions", {
   id: uuid("id").primaryKey().defaultRandom(),

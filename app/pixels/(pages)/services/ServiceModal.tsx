@@ -126,7 +126,13 @@ export function ServiceModal({ service, onClose, onSaved }: ServiceModalProps) {
             </label>
             <input
               name="tags"
-              defaultValue={(service?.tags as string[])?.join(", ") ?? ""}
+              defaultValue={
+                Array.isArray(service?.tags)
+                  ? (service.tags as string[]).join(", ")
+                  : typeof service?.tags === "string"
+                    ? service.tags
+                    : ""
+              }
               className="w-full bg-white/3 border border-white/8 rounded-sm px-3 py-2.5 font-mono text-[11px] text-white focus:outline-none focus:border-white/20"
               placeholder="React, Next.js, TypeScript"
             />

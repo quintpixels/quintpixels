@@ -40,7 +40,6 @@ export function AboutSection() {
         })
       }
 
-      
       const philoEls = sectionRef.current?.querySelectorAll('[data-philo]')
       if (philoEls) {
         gsap.from(philoEls, {
@@ -73,7 +72,6 @@ export function AboutSection() {
         <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-(--pix-gray)">The Studio</span>
       </div>
 
-      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
         
         <div>
@@ -111,7 +109,6 @@ export function AboutSection() {
           </div>
         </div>
 
-        
         <div>
           <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-(--pix-gray) mb-10">
             How We Work

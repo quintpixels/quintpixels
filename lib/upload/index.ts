@@ -45,6 +45,5 @@ export async function deleteUploadedFile(url: string): Promise<void> {
     const { unlink } = await import("fs/promises");
     await unlink(filePath);
   } catch {
-    // File may not exist, ignore
   }
 }

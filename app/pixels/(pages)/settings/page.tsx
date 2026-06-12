@@ -66,7 +66,6 @@ export default async function SettingsPage() {
             </div>
           </div>
 
-          
           <div>
             <div className="font-pixel text-[8px] tracking-[0.3em] text-white/20 uppercase mb-4">
               SOCIAL LINKS

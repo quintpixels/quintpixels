@@ -48,7 +48,6 @@ function buildPixelGrid(
     }
   }
 
-  
   for (let i = cells.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [cells[i], cells[j]] = [cells[j], cells[i]];
@@ -96,7 +95,6 @@ export function HeroSection({
     const ctx2d = canvas.getContext("2d");
     if (!ctx2d) return;
 
-    
     const setupCanvas = () => {
       canvas.width = hero.offsetWidth;
       canvas.height = hero.offsetHeight;
@@ -108,12 +106,10 @@ export function HeroSection({
     };
     setupCanvas();
 
-    
     const gsapCtx = gsap.context(() => {
       
       animateHeroEntrance(container);
 
-      
       const WAVE_FRAC = 0.18;
 
       ScrollTrigger.create({
@@ -153,7 +149,6 @@ export function HeroSection({
         },
       });
 
-      // Subtle typographic scale-down on scroll
       gsap.to(container, {
         scale: 0.9,
         yPercent: -6,
@@ -167,7 +162,6 @@ export function HeroSection({
       });
     }, hero);
 
-    // ── Resize ────────────────────────────────────────────────────
     const onResize = () => {
       setupCanvas();
       ScrollTrigger.refresh();
@@ -176,7 +170,7 @@ export function HeroSection({
 
     return () => {
       window.removeEventListener("resize", onResize);
-      gsapCtx.revert(); // scoped cleanup — doesn't kill other components' triggers
+      gsapCtx.revert(); 
     };
   }, []);
 
@@ -234,14 +228,12 @@ export function HeroSection({
         </svg>
       </div>
 
-      
       <canvas
         ref={canvasRef}
         className="absolute inset-0 z-20 pointer-events-none"
         aria-hidden="true"
       />
 
-      
       <div
         ref={containerRef}
         className="relative z-10 w-full px-6 md:px-10 lg:px-16 pt-24"
@@ -251,7 +243,6 @@ export function HeroSection({
           Creative Technology Studio — Est. 2026
         </div>
 
-        
         <div className="flex items-center gap-3 sm:gap-4 md:gap-5 mb-2">
           <div className="overflow-hidden">
             <h1
@@ -279,7 +270,6 @@ export function HeroSection({
           </div>
         </div>
 
-        
         <div className="overflow-hidden">
           <div
             data-hero-main

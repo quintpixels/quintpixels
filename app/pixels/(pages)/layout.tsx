@@ -2,7 +2,6 @@ import { requireAdmin } from "@/lib/auth/middleware";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { getUnreadCount } from "@/db/queries/admin";
 
-
 export default async function AdminPagesLayout({
   children,
 }: {

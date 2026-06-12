@@ -13,12 +13,10 @@ import {
   seoMetadata,
 } from "@/db/schema";
 
-
 export async function getHeroContent() {
   const [hero] = await db.select().from(heroContent).limit(1);
   return hero ?? null;
 }
-
 
 export async function getNavigationItems() {
   return db
@@ -27,7 +25,6 @@ export async function getNavigationItems() {
     .where(eq(navigationItems.active, true))
     .orderBy(asc(navigationItems.order));
 }
-
 
 export async function getActiveServices() {
   return db
@@ -40,7 +37,6 @@ export async function getActiveServices() {
 export async function getAllServices() {
   return db.select().from(services).orderBy(asc(services.order));
 }
-
 
 export async function getPublishedProjects() {
   return db
@@ -57,7 +53,6 @@ export async function getAllProjects() {
     .orderBy(asc(portfolioProjects.order));
 }
 
-
 export async function getActiveProducts() {
   return db
     .select()
@@ -69,7 +64,6 @@ export async function getActiveProducts() {
 export async function getAllProducts() {
   return db.select().from(products).orderBy(asc(products.order));
 }
-
 
 export async function getActiveTeamMembers() {
   return db
@@ -83,7 +77,6 @@ export async function getAllTeamMembers() {
   return db.select().from(teamMembers).orderBy(asc(teamMembers.order));
 }
 
-
 export async function getActiveTestimonials() {
   return db
     .select()
@@ -95,7 +88,6 @@ export async function getActiveTestimonials() {
 export async function getAllTestimonials() {
   return db.select().from(testimonials).orderBy(asc(testimonials.order));
 }
-
 
 export async function getSiteSetting(key: string) {
   const [setting] = await db

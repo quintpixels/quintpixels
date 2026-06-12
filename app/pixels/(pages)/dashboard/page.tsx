@@ -87,7 +87,6 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        
         <div>
           <div className="font-pixel text-[8px] tracking-[0.3em] text-[#0b0b0a]/40 uppercase mb-4">
             INBOX SUMMARY
@@ -106,7 +105,6 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        
         <div>
           <div className="font-pixel text-[8px] tracking-[0.3em] text-[#0b0b0a]/40 uppercase mb-4">
             QUICK ACTIONS
@@ -135,7 +133,6 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        
         <div className="flex items-center gap-3 pt-4 border-t border-black/6">
           <div className="w-1.5 h-1.5 rounded-full bg-[#0b0b0a]/30 animate-pulse" />
           <span className="font-mono text-[9px] text-[#0b0b0a]/40 uppercase tracking-widest">
@@ -150,7 +147,6 @@ export default async function DashboardPage() {
           </span>
         </div>
 
-        
         <Link
           href="/"
           target="_blank"

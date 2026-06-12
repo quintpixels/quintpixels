@@ -12,7 +12,6 @@ type Fragment = {
   phase: number;
 };
 
-
 export function PixelFragmentSystem() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -34,7 +33,6 @@ export function PixelFragmentSystem() {
       canvas.height = window.innerHeight;
       fragments.length = 0;
 
-      
       const count = Math.min(
         180,
         Math.floor((canvas.width * canvas.height) / 16_000),
@@ -58,7 +56,6 @@ export function PixelFragmentSystem() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      
       const step = 4;
       const offset = (tick * 0.22) % step;
       ctx.fillStyle = "rgba(11,11,10,0.004)";
@@ -66,7 +63,6 @@ export function PixelFragmentSystem() {
         ctx.fillRect(0, y, canvas.width, 1);
       }
 
-      
       const gs = 64;
       ctx.fillStyle = "rgba(11,11,10,0.04)";
       for (let gx = gs / 2; gx < canvas.width; gx += gs) {
@@ -75,7 +71,6 @@ export function PixelFragmentSystem() {
         }
       }
 
-      
       fragments.forEach((f) => {
         const pulse = Math.sin(tick * 0.016 + f.phase) * 0.3 + 0.7;
         ctx.fillStyle = `rgba(11,11,10,${(f.baseOpacity * pulse).toFixed(3)})`;

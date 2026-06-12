@@ -1,7 +1,3 @@
-/**
- * Module-level flag for the 404 page.
- * Lets ClientShell know to suppress FloatingActions without a React Context.
- */
 type Listener = () => void;
 
 let _active = false;

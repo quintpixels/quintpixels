@@ -63,7 +63,6 @@ export function SeoEditor({
         ))}
       </div>
 
-      
       <form
         key={activePage}
         onSubmit={handleSubmit}
