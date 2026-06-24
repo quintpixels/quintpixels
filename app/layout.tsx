@@ -13,6 +13,36 @@ export const metadata: Metadata = {
   title: "Quint Pixels — Creative Technology Studio",
   description:
     "A cinematic technology studio building products, systems, and experiences at the intersection of design and engineering.",
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      {
+        url: "/favicon/icon1.png",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/favicon/icon0.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+    shortcut: "/favicon/icon1.png",
+    apple: [
+      {
+        url: "/favicon/apple-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/favicon/apple-icon-dark.png",
+        sizes: "180x180",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
