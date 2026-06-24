@@ -4,13 +4,16 @@ import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { BackHomeLink } from "@/components/BackHomeLink";
 import { getPublishedProjects } from "@/db/queries/content";
+import { constructMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Portfolio — Quint Pixels",
-  description:
-    "Selected work across SaaS platforms, enterprise systems, mobile apps, and AI products.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return constructMetadata("portfolio", {
+    title: "Portfolio — Quint Pixels",
+    description:
+      "Selected work across SaaS platforms, enterprise systems, mobile apps, and AI products.",
+  });
+}
 
 export default async function PortfolioPage() {
   await connection();

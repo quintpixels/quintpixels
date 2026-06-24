@@ -15,6 +15,16 @@ import {
   getActiveProducts,
   getActiveTeamMembers,
 } from "@/db/queries/content";
+import { constructMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return constructMetadata("home", {
+    title: "Quint Pixels — Creative Technology Studio",
+    description:
+      "A cinematic technology studio building products, systems, and experiences at the intersection of design and engineering.",
+  });
+}
 
 export default async function Home() {
   await connection();

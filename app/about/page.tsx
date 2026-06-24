@@ -2,13 +2,16 @@ import { Navigation } from "@/components/Navigation";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { BackHomeLink } from "@/components/BackHomeLink";
+import { constructMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "About — Quint Pixels",
-  description:
-    "A creative technology studio obsessed with the intersection of engineering and expressive design.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return constructMetadata("about", {
+    title: "About — Quint Pixels",
+    description:
+      "A creative technology studio obsessed with the intersection of engineering and expressive design.",
+  });
+}
 
 export default function AboutPage() {
   return (

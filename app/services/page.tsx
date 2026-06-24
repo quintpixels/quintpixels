@@ -4,13 +4,16 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { BackHomeLink } from "@/components/BackHomeLink";
 import { getActiveServices } from "@/db/queries/content";
+import { constructMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Services — Quint Pixels",
-  description:
-    "Full-service creative technology — from web apps to AI integrations.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return constructMetadata("services", {
+    title: "Services — Quint Pixels",
+    description:
+      "Full-service creative technology — from web apps to AI integrations.",
+  });
+}
 
 export default async function ServicesPage() {
   await connection();

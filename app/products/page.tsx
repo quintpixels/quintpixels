@@ -4,13 +4,16 @@ import { ProductsSection } from "@/components/sections/ProductsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { BackHomeLink } from "@/components/BackHomeLink";
 import { getActiveProducts } from "@/db/queries/content";
+import { constructMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Products — Quint Pixels",
-  description:
-    "Internal products and tools built for the modern engineering team.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return constructMetadata("products", {
+    title: "Products — Quint Pixels",
+    description:
+      "Internal products and tools built for the modern engineering team.",
+  });
+}
 
 export default async function ProductsPage() {
   await connection();

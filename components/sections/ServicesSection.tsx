@@ -78,10 +78,11 @@ type CardAnim = "browser" | "terminal" | "phone" | "palette" | "neural" | "cloud
 
 function resolveAnim(title: string, icon: string): CardAnim {
   const key = `${title} ${icon}`.toLowerCase();
+  if (key.includes("ui") || key.includes("ux") ||  key.includes("design") ||key.includes("design") || key.includes("brand") || key.includes("palette")) return "palette";
   if (key.includes("web") || key.includes("monitor")) return "browser";
   if (key.includes("software") || key.includes("code") || key.includes("backend")) return "terminal";
   if (key.includes("mobile") || key.includes("app")) return "phone";
-  if (key.includes("ui") || key.includes("ux") || key.includes("design") || key.includes("brand") || key.includes("palette")) return "palette";
+  if (key.includes("cloud") || key.includes("devops") || key.includes("infrastructure")) return "cloud";
   if (key.includes("ai") || key.includes("ml") || key.includes("cpu") || key.includes("neural")) return "neural";
   return "cloud";
 }
