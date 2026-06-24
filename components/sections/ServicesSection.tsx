@@ -226,20 +226,20 @@ function PhoneVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | nu
 
   return (
     <div className="w-full h-28 flex items-center justify-center overflow-hidden">
-      <div ref={phoneBody} className="relative w-16 h-24 rounded-xl border-2 border-white/20 bg-black/30 overflow-hidden flex flex-col" style={{ transform: "translateY(6px)" }}>
+      <div ref={phoneBody} className="relative w-18 h-25 rounded-xl border-2 border-white/20 bg-black/30 overflow-hidden flex flex-col" style={{ transform: "translateY(6px)" }}>
         
         <div className="flex justify-center pt-1.5">
           <div className="w-6 h-1 rounded-full bg-white/20" />
         </div>
         
-        <div className="flex-1 bg-gradient-to-b from-white/5 to-black/20 m-1 rounded-lg p-1.5 overflow-hidden">
+        <div className="flex-1 bg-gradient-to-b from-white/5 to-black/20 m-1 rounded-lg p-1 overflow-hidden">
           
-          <div ref={notif} className="bg-white/10 rounded-md p-1.5 border border-white/10" style={{ opacity: 0, transform: "translateY(-20px)" }}>
-            <div className="flex items-center gap-1 mb-1">
-              <div className="w-2 h-2 rounded-full bg-blue-400/70" />
-              <span className="font-mono text-[6px] text-white/50">QuintPixels</span>
+          <div ref={notif} className="bg-white/10 rounded-md py-1 px-1 border border-white/10" style={{ opacity: 0, transform: "translateY(-20px)" }}>
+            <div className="flex items-center gap-1 mb-0.5">
+              <div className="w-1 h-1 rounded-full bg-white/80" />
+              <span className="font-mono text-[5px] tracking-tight text-white/50 whitespace-nowrap">QuintPixels</span>
             </div>
-            <div className="font-mono text-[6px] text-white/70">Build deployed ✓</div>
+            <div className="font-mono text-[5px] text-white/70 whitespace-nowrap">Build deployed</div>
           </div>
           
           <div className="grid grid-cols-3 gap-1 mt-2">
