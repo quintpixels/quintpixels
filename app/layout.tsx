@@ -30,6 +30,7 @@ export default function RootLayout({
         GeistPixelSquare.variable,
         GeistPixelGrid.variable,
       )}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col grain">
         <PagePreloader />
