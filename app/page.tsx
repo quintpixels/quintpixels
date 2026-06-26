@@ -65,6 +65,7 @@ export default async function Home() {
           tags: normalizeTags(p.tags),
           year: p.year ?? new Date().getFullYear().toString(),
           color: p.color ?? "#f0ede9",
+          liveUrl: p.liveUrl ?? undefined,
         }))
       : undefined;
 

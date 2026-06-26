@@ -18,6 +18,7 @@ const PROJECTS = [
     tags: ["Next.js", "Node.js", "PostgreSQL"],
     year: "2026",
     color: "#f0ede9",
+    liveUrl: "https://orbis.quintpixels.com",
   },
   {
     index: "02",
@@ -27,6 +28,7 @@ const PROJECTS = [
     tags: ["Go", "Kubernetes", "Kafka"],
     year: "2026",
     color: "#e8e4de",
+    liveUrl: "https://axiom.quintpixels.com",
   },
   {
     index: "03",
@@ -36,6 +38,7 @@ const PROJECTS = [
     tags: ["React Native", "Swift", "ML"],
     year: "2023",
     color: "#f2efea",
+    liveUrl: "https://trace.quintpixels.com",
   },
   {
     index: "04",
@@ -45,6 +48,7 @@ const PROJECTS = [
     tags: ["Python", "LangChain", "Pinecone"],
     year: "2026",
     color: "#ede9e3",
+    liveUrl: "https://ether.quintpixels.com",
   },
   {
     index: "05",
@@ -54,6 +58,7 @@ const PROJECTS = [
     tags: ["React", "GraphQL", "Redis"],
     year: "2023",
     color: "#f5f2ee",
+    liveUrl: "https://nexus.quintpixels.com",
   },
 ];
 
@@ -65,6 +70,7 @@ interface ProjectItem {
   tags: string[];
   year: string;
   color: string;
+  liveUrl?: string;
 }
 
 interface PortfolioSectionProps {
@@ -160,11 +166,19 @@ export function PortfolioSection({ projects }: PortfolioSectionProps) {
           style={{ width: "max-content", alignItems: "center" }}
         >
           {displayProjects.map(
-            ({ index, category, title, sub, tags, year, color }) => {
+            ({ index, category, title, sub, tags, year, color, liveUrl }) => {
               const dark = isDarkColor(color);
               return (
-                <div
+                <a
                   key={index}
+                  href={liveUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (!liveUrl) {
+                      e.preventDefault();
+                    }
+                  }}
                   data-portfolio-card
                   className={`group relative flex-shrink-0 w-[80vw] md:w-[50vw] lg:w-[38vw] h-[55vh] overflow-hidden cursor-pointer border ${dark ? "border-white/10" : "border-(--pix-border)"}`}
                   style={{ backgroundColor: color }}
@@ -216,7 +230,7 @@ export function PortfolioSection({ projects }: PortfolioSectionProps) {
                   </div>
 
                   <div className={`absolute bottom-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ${dark ? "bg-white" : "bg-(--pix-black)"}`} />
-                </div>
+                </a>
               );
             },
           )}

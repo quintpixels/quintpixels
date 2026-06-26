@@ -29,6 +29,7 @@ export default async function PortfolioPage() {
           tags: (p.tags as string[]) ?? [],
           year: p.year ?? new Date().getFullYear().toString(),
           color: p.color ?? "#f0ede9",
+          liveUrl: p.liveUrl ?? undefined,
         }))
       : undefined;
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -87,14 +87,12 @@ function resolveAnim(title: string, icon: string): CardAnim {
   return "cloud";
 }
 
-function BrowserVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | null> }) {
+function BrowserVisual({ cardRef, isActive }: { cardRef: React.RefObject<HTMLDivElement | null>; isActive: boolean }) {
   const lines = useRef<HTMLDivElement[]>([]);
   const progress = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-    const onEnter = () => {
+    if (isActive) {
       if (progress.current) {
         gsap.fromTo(progress.current, { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power2.inOut" });
       }
@@ -104,15 +102,11 @@ function BrowserVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | 
           stagger: { each: 0.07, from: "start" },
         });
       }
-    };
-    const onLeave = () => {
+    } else {
       if (progress.current) gsap.to(progress.current, { scaleX: 0, duration: 0.5, ease: "power2.in" });
       if (lines.current.length) gsap.to(lines.current, { scaleX: 0.3, opacity: 0.3, duration: 0.3, stagger: 0.04 });
-    };
-    el.addEventListener("mouseenter", onEnter);
-    el.addEventListener("mouseleave", onLeave);
-    return () => { el.removeEventListener("mouseenter", onEnter); el.removeEventListener("mouseleave", onLeave); };
-  }, [cardRef]);
+    }
+  }, [isActive]);
 
   return (
     <div className="relative w-full h-28 rounded-sm overflow-hidden border border-[var(--pix-border)] bg-[var(--pix-surface)]">
@@ -144,14 +138,12 @@ function BrowserVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | 
   );
 }
 
-function TerminalVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | null> }) {
+function TerminalVisual({ cardRef, isActive }: { cardRef: React.RefObject<HTMLDivElement | null>; isActive: boolean }) {
   const lines = useRef<HTMLSpanElement[]>([]);
   const cursor = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-    const onEnter = () => {
+    if (isActive) {
       const tl = gsap.timeline();
       lines.current.forEach((line, i) => {
         tl.to(line, { opacity: 1, duration: 0.01 }, i * 0.18);
@@ -159,14 +151,10 @@ function TerminalVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement |
       if (cursor.current) {
         gsap.to(cursor.current, { opacity: 0, repeat: 8, yoyo: true, duration: 0.4, ease: "steps(1)" });
       }
-    };
-    const onLeave = () => {
+    } else {
       gsap.to(lines.current, { opacity: 0, stagger: 0.05, duration: 0.2 });
-    };
-    el.addEventListener("mouseenter", onEnter);
-    el.addEventListener("mouseleave", onLeave);
-    return () => { el.removeEventListener("mouseenter", onEnter); el.removeEventListener("mouseleave", onLeave); };
-  }, [cardRef]);
+    }
+  }, [isActive]);
 
   const codeLines = [
     { color: "text-purple-700", text: "const api = " },
@@ -200,29 +188,23 @@ function TerminalVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement |
   );
 }
 
-function PhoneVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | null> }) {
+function PhoneVisual({ cardRef, isActive }: { cardRef: React.RefObject<HTMLDivElement | null>; isActive: boolean }) {
   const notif = useRef<HTMLDivElement>(null);
   const phoneBody = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-    const onEnter = () => {
+    if (isActive) {
       if (phoneBody.current) {
         gsap.fromTo(phoneBody.current, { y: 6 }, { y: 0, duration: 0.5, ease: "back.out(2)" });
       }
       if (notif.current) {
         gsap.fromTo(notif.current, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.2 });
       }
-    };
-    const onLeave = () => {
+    } else {
       if (notif.current) gsap.to(notif.current, { y: -20, opacity: 0, duration: 0.3 });
       if (phoneBody.current) gsap.to(phoneBody.current, { y: 6, duration: 0.3 });
-    };
-    el.addEventListener("mouseenter", onEnter);
-    el.addEventListener("mouseleave", onLeave);
-    return () => { el.removeEventListener("mouseenter", onEnter); el.removeEventListener("mouseleave", onLeave); };
-  }, [cardRef]);
+    }
+  }, [isActive]);
 
   return (
     <div className="w-full h-28 flex items-center justify-center overflow-hidden">
@@ -257,14 +239,12 @@ function PhoneVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | nu
   );
 }
 
-function PaletteVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | null> }) {
+function PaletteVisual({ cardRef, isActive }: { cardRef: React.RefObject<HTMLDivElement | null>; isActive: boolean }) {
   const wheel = useRef<HTMLDivElement>(null);
   const swatches = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-    const onEnter = () => {
+    if (isActive) {
       if (wheel.current) {
         gsap.to(wheel.current, { rotation: 180, duration: 1.2, ease: "power2.inOut" });
       }
@@ -274,15 +254,11 @@ function PaletteVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | 
           stagger: { each: 0.05, from: "start" },
         });
       }
-    };
-    const onLeave = () => {
+    } else {
       if (wheel.current) gsap.to(wheel.current, { rotation: 0, duration: 0.8, ease: "power2.out" });
       if (swatches.current.length) gsap.to(swatches.current, { scaleY: 0, opacity: 0, duration: 0.25, stagger: 0.04 });
-    };
-    el.addEventListener("mouseenter", onEnter);
-    el.addEventListener("mouseleave", onLeave);
-    return () => { el.removeEventListener("mouseenter", onEnter); el.removeEventListener("mouseleave", onLeave); };
-  }, [cardRef]);
+    }
+  }, [isActive]);
 
   const colors = ["#FF6B6B", "#FFE66D", "#4ECDC4", "#A8E6CF", "#3D5A80", "#E07A5F"];
 
@@ -314,16 +290,13 @@ function PaletteVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | 
   );
 }
 
-function NeuralVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | null> }) {
+function NeuralVisual({ cardRef, isActive }: { cardRef: React.RefObject<HTMLDivElement | null>; isActive: boolean }) {
   const nodes = useRef<SVGCircleElement[]>([]);
   const paths = useRef<SVGPathElement[]>([]);
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-    let animation: gsap.core.Tween | null = null;
-    const onEnter = () => {
+    if (isActive) {
       if (nodes.current.length) {
         gsap.to(nodes.current, {
           scale: 1.3, transformOrigin: "center center",
@@ -339,19 +312,12 @@ function NeuralVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | n
           yoyo: true, repeat: 5,
         });
       }
-    };
-    const onLeave = () => {
+    } else {
       gsap.killTweensOf([...nodes.current, ...paths.current]);
       gsap.to(nodes.current, { scale: 1, opacity: 0.4, duration: 0.3 });
       gsap.to(paths.current, { opacity: 0.15, duration: 0.3 });
-    };
-    el.addEventListener("mouseenter", onEnter);
-    el.addEventListener("mouseleave", onLeave);
-    return () => {
-      el.removeEventListener("mouseenter", onEnter);
-      el.removeEventListener("mouseleave", onLeave);
-    };
-  }, [cardRef]);
+    }
+  }, [isActive]);
 
   const pts = [
     { x: 20, y: 56 }, { x: 60, y: 28 }, { x: 60, y: 84 },
@@ -386,14 +352,12 @@ function NeuralVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | n
   );
 }
 
-function CloudVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | null> }) {
+function CloudVisual({ cardRef, isActive }: { cardRef: React.RefObject<HTMLDivElement | null>; isActive: boolean }) {
   const particles = useRef<HTMLDivElement[]>([]);
   const serverRacks = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-    const onEnter = () => {
+    if (isActive) {
       if (particles.current.length) {
         particles.current.forEach((p, i) => {
           gsap.fromTo(p,
@@ -417,16 +381,12 @@ function CloudVisual({ cardRef }: { cardRef: React.RefObject<HTMLDivElement | nu
           stagger: { each: 0.08 },
         });
       }
-    };
-    const onLeave = () => {
+    } else {
       gsap.killTweensOf(particles.current);
       gsap.to(particles.current, { y: 0, opacity: 0, scale: 1, duration: 0.3 });
       gsap.to(serverRacks.current, { scaleX: 0.3, duration: 0.3 });
-    };
-    el.addEventListener("mouseenter", onEnter);
-    el.addEventListener("mouseleave", onLeave);
-    return () => { el.removeEventListener("mouseenter", onEnter); el.removeEventListener("mouseleave", onLeave); };
-  }, [cardRef]);
+    }
+  }, [isActive]);
 
   return (
     <div className="w-full h-28 flex items-end gap-3 px-4 pb-3 overflow-hidden relative border border-[var(--pix-border)] rounded-sm bg-[var(--pix-surface)]">
@@ -484,10 +444,49 @@ function ServiceCard({ num, title, desc, icon, tags, index, cardRef }: ServiceCa
   const anim = resolveAnim(title, icon ?? "");
   const innerRef = useRef<HTMLDivElement>(null);
 
+  const [isMobile, setIsMobile] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
   const setRef = (el: HTMLDivElement | null) => {
     (innerRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
     cardRef(el);
   };
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) {
+      setIsIntersecting(false);
+      return;
+    }
+
+    const el = innerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "-25% 0px -25% 0px", // Trigger in middle 50% of viewport height
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [isMobile]);
+
+  const isActive = isMobile ? isIntersecting : isHovered;
 
   const safeTags = Array.isArray(tags)
     ? tags
@@ -499,36 +498,38 @@ function ServiceCard({ num, title, desc, icon, tags, index, cardRef }: ServiceCa
     <div
       ref={setRef}
       data-service-anim={anim}
-      className="group relative flex flex-col bg-[var(--pix-white)] border border-[var(--pix-border)] rounded-sm overflow-hidden cursor-default transition-all duration-500 hover:border-[var(--pix-black)]/30 hover:shadow-2xl hover:-translate-y-1"
+      onMouseEnter={() => !isMobile && setIsHovered(true)}
+      onMouseLeave={() => !isMobile && setIsHovered(false)}
+      className={`group relative flex flex-col bg-[var(--pix-white)] border border-[var(--pix-border)] rounded-sm overflow-hidden cursor-default transition-all duration-500 hover:border-[var(--pix-black)]/30 hover:shadow-2xl hover:-translate-y-1 ${isActive ? "is-active border-[var(--pix-black)]/30 shadow-2xl -translate-y-1" : ""}`}
       style={{ willChange: "transform" }}
     >
       
-      <div className="absolute top-0 left-0 right-0 h-px bg-[var(--pix-black)] origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-[var(--pix-black)] origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100 group-[.is-active]:scale-x-100" />
 
       <div className="flex items-start justify-between p-6 pb-3">
         <div>
           <span className="font-mono text-[9px] tracking-[0.3em] text-[var(--pix-gray-light)] uppercase">
             {num}
           </span>
-          <h3 className="font-pixel text-[1.1rem] sm:text-[1.3rem] text-[var(--pix-black)] whitespace-pre-line leading-tight mt-2 group-hover:opacity-80 transition-opacity duration-300">
+          <h3 className="font-pixel text-[1.1rem] sm:text-[1.3rem] text-[var(--pix-black)] whitespace-pre-line leading-tight mt-2 group-hover:opacity-80 group-[.is-active]:opacity-80 transition-opacity duration-300">
             {title}
           </h3>
         </div>
         <div
           data-service-icon
-          className="shrink-0 p-2 rounded-sm border border-[var(--pix-border)] text-[var(--pix-gray-light)] group-hover:border-[var(--pix-black)]/20 group-hover:text-[var(--pix-black)] transition-all duration-400"
+          className="shrink-0 p-2 rounded-sm border border-[var(--pix-border)] text-[var(--pix-gray-light)] group-hover:border-[var(--pix-black)]/20 group-[.is-active]:border-[var(--pix-black)]/20 group-hover:text-[var(--pix-black)] group-[.is-active]:text-[var(--pix-black)] transition-all duration-400"
         >
           <Icon size={20} strokeWidth={1.5} />
         </div>
       </div>
 
       <div className="px-4 py-2">
-        {anim === "browser"  && <BrowserVisual  cardRef={innerRef} />}
-        {anim === "terminal" && <TerminalVisual  cardRef={innerRef} />}
-        {anim === "phone"    && <PhoneVisual     cardRef={innerRef} />}
-        {anim === "palette"  && <PaletteVisual   cardRef={innerRef} />}
-        {anim === "neural"   && <NeuralVisual    cardRef={innerRef} />}
-        {anim === "cloud"    && <CloudVisual     cardRef={innerRef} />}
+        {anim === "browser"  && <BrowserVisual  cardRef={innerRef} isActive={isActive} />}
+        {anim === "terminal" && <TerminalVisual  cardRef={innerRef} isActive={isActive} />}
+        {anim === "phone"    && <PhoneVisual     cardRef={innerRef} isActive={isActive} />}
+        {anim === "palette"  && <PaletteVisual   cardRef={innerRef} isActive={isActive} />}
+        {anim === "neural"   && <NeuralVisual    cardRef={innerRef} isActive={isActive} />}
+        {anim === "cloud"    && <CloudVisual     cardRef={innerRef} isActive={isActive} />}
       </div>
 
       <p className="px-6 py-4 font-sans text-sm text-[var(--pix-gray)] leading-relaxed flex-1">
@@ -539,7 +540,7 @@ function ServiceCard({ num, title, desc, icon, tags, index, cardRef }: ServiceCa
         {safeTags.map((tag) => (
           <span
             key={tag}
-            className="font-mono text-[9px] tracking-[0.1em] uppercase text-[var(--pix-gray)] border border-[var(--pix-border)] px-2 py-1 rounded-sm group-hover:border-[var(--pix-black)]/20 transition-colors duration-300"
+            className="font-mono text-[9px] tracking-[0.1em] uppercase text-[var(--pix-gray)] border border-[var(--pix-border)] px-2 py-1 rounded-sm group-hover:border-[var(--pix-black)]/20 group-[.is-active]:border-[var(--pix-black)]/20 transition-colors duration-300"
           >
             {tag}
           </span>

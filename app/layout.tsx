@@ -62,7 +62,7 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col grain">
+      <body className="min-h-full flex flex-col grain" suppressHydrationWarning>
         <PagePreloader />
         <SmoothScrollProvider>
           <ClientShell />
